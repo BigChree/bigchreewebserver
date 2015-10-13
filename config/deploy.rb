@@ -8,7 +8,6 @@ set :user, "chris"
 set :deploy_via, :copy
 set :rails_env, "production"
 set :ssh_options, { :forward_agent => true, :port => 4321 }
-default_run_options[:pty] = true
 server "99.15.81.35", :app, :web, :db, :primary => true
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -42,6 +41,11 @@ server "99.15.81.35", :app, :web, :db, :primary => true
 
 namespace :deploy do
 
+  desc "Restart Passenger app"
+  task :restart do
+  	run "#{ try_sudo } touch #{ File.join(current_path, 'tmp', 'restart.txt') }"
+  end
+
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -50,5 +54,7 @@ namespace :deploy do
       # end
     end
   end
+
+
 
 end
