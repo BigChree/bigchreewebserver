@@ -8,7 +8,7 @@ set :user, "chris"
 set :deploy_via, :copy
 set :rails_env, "production"
 set :ssh_options, { :forward_agent => true, :port => 4321 }
-server "99.15.81.35", :app, :web, :db, :primary => true
+server "99.15.81.35", roles: %w{app db web}, :primary => true
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
