@@ -7,8 +7,17 @@ set :repo_url, 'https://github.com/BigChree/bigchreewebserver.git'
 set :user, "chris"
 set :deploy_via, :copy
 set :rails_env, "production"
-set :ssh_options, { :forward_agent => true, :port => 4321 }
+#set :ssh_options, { :forward_agent => true, :port => 4321 }
 server "99.15.81.35", roles: %w{app db web}, :primary => true
+
+set :ssh_options, {
+    user: 'chris', # overrides user setting above
+    #keys: %w(C:\Users\Chris Taylor\.ssh\bigchree_rsa),
+    forward_agent: true,
+    port: 4321
+    #auth_methods: %w(publickey password)
+    # password: 'please use keys'
+	}
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
