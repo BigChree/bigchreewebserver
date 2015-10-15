@@ -50,11 +50,6 @@ set :ssh_options, {
 
 namespace :deploy do
 
-  desc "Restart Passenger app"
-  task :restart do
-  	run "#{ try_sudo } touch #{ File.join(current_path, 'tmp', 'restart.txt') }"
-  end
-
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -64,6 +59,11 @@ namespace :deploy do
     end
   end
 
+end
+after "deploy", "deploy:symlink_config_files"
 
-
+desc "Symlink shared config files"
+task :symlink_config_files do
+    run "#{ try_sudo } ln -s #{ deploy_to }/shared/config/database.yml #{ current_path }/config/database.yml"
+    run "#{ try_sudo } ln -s #{ deploy_to }/shared/config/secrets.yml #{ current_path }/config/secrets.yml"
 end
