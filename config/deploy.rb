@@ -6,7 +6,7 @@ set :repo_url, 'https://github.com/BigChree/bigchreewebserver.git'
 
 set :user, "chris"
 set :deploy_via, :copy
-set :rails_env, "production"
+set :rails_env, :production
 #set :ssh_options, { :forward_agent => true, :port => 4321 }
 server "99.15.81.35", roles: %w{app db web}, :primary => true
 
@@ -37,7 +37,7 @@ set :ssh_options, {
 # set :pty, true
 
 # Default value for :linked_files is []
-# set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 
 # Default value for linked_dirs is []
 # set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
