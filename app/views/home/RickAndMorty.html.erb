@@ -1,0 +1,84 @@
+<%= javascript_include_tag "prefix-free.js" %>
+<style>
+
+.pictureContainer{
+	border: 1px solid #CCCCCC;
+	display: inline-block;
+
+	height: 270px;
+	margin: 0px;
+	overflow: hidden;
+	width: 480px;
+}
+
+.pictureContainer img {
+	position: relative;
+	transform: translate3d(0px, 0px, 0px);
+	transition: transform .2s ease-in-out;
+}
+
+.pictureContainer img:hover {
+	transform: translate3d(-480px, 0px,0px);
+}
+
+#pictureContainer2{
+	border: 1px solid #CCCCCC;
+	display: inline-block;
+
+	height: 163px;
+	margin: 0px;
+	overflow: hidden;
+	width: 290px;
+}
+
+#pictureContainer2 img {
+	position: relative;
+	transform: translate3d(0px, 0px, 0px);
+	transition: transform .2s ease-in-out;
+}
+
+#pictureContainer2 img:hover {
+	transform: translate3d(-292px, 0px,0px);
+}
+
+#imageContainer {
+    background-color: #333;
+    width: 300px;
+    height: 250px;
+    overflow: hidden;
+    border: 2px #333 solid;
+}  
+@keyframes kenburns {
+    0% {
+      opacity: 0;
+    }
+    5% {
+      opacity: 1;
+    }
+    95% {
+        transform: scale3d(1.5, 1.5, 1.5) translate3d(-50px, -20px, 0px);
+        animation-timing-function: ease-in;
+        opacity: 1;
+    }
+    100% {
+        transform: scale3d(2, 2, 2) translate3d(-160px, -30px, 0px);
+        opacity: 0;
+    }
+}
+#imageContainer img {
+  animation: kenburns 20s infinite;
+}
+</style>
+
+
+<div class="pictureContainer">
+	<%= image_tag("RickAndMortyStitch1.png", size:"960x270") %>
+</div>
+<div id="pictureContainer2">
+	<%= image_tag("images.jpg", size:"590x163") %>
+</div>
+
+<div id="imageContainer">
+	<%= image_tag("drunkRick.jpg") %>
+</div>
+
