@@ -1,7 +1,7 @@
 <%= javascript_include_tag "prefix-free.js" %>
 <style>
 
-.pictureContainer{
+#pictureContainer{
 	border: 1px solid #CCCCCC;
 	display: inline-block;
 
@@ -11,13 +11,13 @@
 	width: 480px;
 }
 
-.pictureContainer img {
+#pictureContainer img {
 	position: relative;
 	transform: translate3d(0px, 0px, 0px);
 	transition: transform .2s ease-in-out;
 }
 
-.pictureContainer img:hover {
+#pictureContainer img:hover {
 	transform: translate3d(-480px, 0px,0px);
 }
 
@@ -71,14 +71,35 @@
 </style>
 
 
-<div class="pictureContainer">
-	<%= image_tag("RickAndMortyStitch1.png", size:"960x270") %>
-</div>
-<div id="pictureContainer2">
-	<%= image_tag("images.jpg", size:"590x163") %>
-</div>
+<div class="container">  
+    <div class="row">  
+        <div class="col-md-12" >
+            <%= image_tag("QQL2Htb.png", class:"img-responsive") %>
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="pictureContainer">
+    			<%= image_tag("RickAndMortyStitch1.png", size:"960x270") %>
+    		</div>
 
-<div id="imageContainer">
-	<%= image_tag("drunkRick.jpg") %>
-</div>
+            <div id="pictureContainer">
+    			<%= image_tag("rickpizza.png", size:"960x270") %>
+    		</div>
+        </div>  
+    </div>  
+  
+    <div class="row">
+        <div class="col-md-4"><%= image_tag("mortyandfart.jpg", class:"img-responsive") %></div> 
+        <div class="col-md-4"><%= image_tag("rickmortyguns.jpg", class:"img-responsive") %></div> 
+        <div class="col-md-4"><%= image_tag("RickandMortydotcom.jpg", class:"img-responsive") %></div>
+    </div>  
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+        <div id="imageContainer"><%= image_tag("drunkRick.jpg") %></div>
+        </div>
+    </div>
+
+</div>  
 
